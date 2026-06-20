@@ -14,12 +14,13 @@ Este é um servidor Model Context Protocol (MCP) desenvolvido em Node.js que per
 ## 🔌 Ferramentas Expostas (MCP Tools)
 O servidor expõe as seguintes ferramentas para os agentes de IA:
 1. `get_shopping_lists`: Lista todas as listas de compras disponíveis no sistema.
-2. `add_item_to_list`: Adiciona um novo item (com descrição, quantidade, preço e unidade) a uma lista específica.
-3. `edit_item_in_list`: Edita ou atualiza as propriedades de um item existente em uma lista.
-4. `delete_item_from_list`: Exclui um item de uma lista.
-5. `edit_shopping_list`: Edita o nome ou orçamento limite de uma lista.
-6. `delete_shopping_list`: Exclui permanentemente uma lista de compras inteira.
-7. `set_item_completion_status`: Marca/desmarca itens como comprados (`isChecked`).
+2. `create_shopping_list`: Cria uma nova lista de compras vazia no sistema.
+3. `add_item_to_list`: Adiciona um novo item (com descrição, quantidade, preço e unidade) a uma lista específica.
+4. `edit_item_in_list`: Edita ou atualiza as propriedades de um item existente em uma lista.
+5. `delete_item_from_list`: Exclui um item de uma lista.
+6. `edit_shopping_list`: Edita o nome ou orçamento limite de uma lista.
+7. `delete_shopping_list`: Exclui permanentemente uma lista de compras inteira.
+8. `set_item_completion_status`: Marca/desmarca itens como comprados (`isChecked`).
 
 ---
 

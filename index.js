@@ -179,6 +179,28 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           },
           required: ["listId", "itemId", "isChecked"],
         },
+      },
+      {
+        name: "create_shopping_list",
+        description: "Cria uma nova lista de compras vazia no sistema.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            name: {
+              type: "string",
+              description: "O nome da nova lista de compras",
+            },
+            budget: {
+              type: "number",
+              description: "O orçamento limite da lista de compras (opcional)",
+            },
+            description: {
+              type: "string",
+              description: "Uma breve descrição para a lista de compras (opcional)",
+            }
+          },
+          required: ["name"],
+        },
       }
     ],
   };
@@ -345,6 +367,29 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           {
             type: "text",
             text: `Status do item atualizado com sucesso! Comprado: ${response.data.isChecked}`,
+          },
+        ],
+      };
+    }
+
+    if (request.params.name === "create_shopping_list") {
+      const { name, budget, description } = request.params.arguments;
+      
+      const newList = {
+        name,
+        budget: budget !== undefined ? budget : 0.0,
+        description: description || "",
+        status: "OPEN",
+        items: []
+      };
+      
+      const response = await axios.post(`${API_BASE_URL}/lists`, newList);
+      
+      return {
+        content: [
+          {
+            type: "text",
+            text: `Lista de compras criada com sucesso! Dados: ${JSON.stringify(response.data)}`,
           },
         ],
       };
